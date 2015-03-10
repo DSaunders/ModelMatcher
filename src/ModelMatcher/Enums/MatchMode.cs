@@ -1,6 +1,6 @@
 ﻿namespace ModelMatcher.Enums
 {
-    public enum MatchMode
+    internal enum MatchMode
     {
         Strict,
         IgnoreDefaultPropertiesInExpectedModel
