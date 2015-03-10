@@ -2,7 +2,7 @@
 
 **ModelMatcher** makes asserting on your models easier and cleaner.
 
-### Assert that a model is as expected 
+### Assert that a model has the values you expect
 
 ```csharp
 var result = myApi.Call();
