@@ -37,7 +37,7 @@
                 };
 
                 // Then
-                Should.NotThrow(() => model.ShouldMatch(expectedResult, MatchMode.IgnoreDefaultPropertiesInExpectedModel));
+                Should.NotThrow(() => model.ShouldMatchNonDefaultFields(expectedResult));
             }
 
             [Fact]
@@ -65,7 +65,7 @@
                 };
 
                 // Then
-                Should.NotThrow(() => model.ShouldMatch(expectedResult, MatchMode.IgnoreDefaultPropertiesInExpectedModel));
+                Should.NotThrow(() => model.ShouldMatchNonDefaultFields(expectedResult));
             }
 
             [Fact]
@@ -93,7 +93,7 @@
                 };
 
                 // Then
-                Should.Throw<DidNotMatch>(() => model.ShouldMatch(expectedResult, MatchMode.IgnoreDefaultPropertiesInExpectedModel));
+                Should.Throw<DidNotMatch>(() => model.ShouldMatchNonDefaultFields(expectedResult));
             }
 
             [Fact]
@@ -118,7 +118,7 @@
                     StringProperty = default(string),
                     BoolType = default(bool)
                 };
-                var exception = Record.Exception(() => model.ShouldMatch(expectedResult));
+                var exception = Record.Exception(() => model.ShouldMatchNonDefaultFields(expectedResult));
 
                 // Then
                 exception.Message.ShouldContain("Expected property GuidProperty to be \"49934b49-1cc3-443d-a89a-23496708f64b\" but was \"5319ca84-12f8-4d1c-a773-af2a5bbb0d1f\"" + Environment.NewLine);

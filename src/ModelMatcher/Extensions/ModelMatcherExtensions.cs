@@ -10,7 +10,17 @@
     {
         private static readonly string ExceptionText = "Expected property {0} to be \"{1}\" but was \"{2}\"" + Environment.NewLine;
 
-        public static void ShouldMatch<T>(this T itemUnderTest, T expected, MatchMode mode = MatchMode.Strict)
+        public static void ShouldMatchNonDefaultFields<T>(this T itemUnderTest, T expected)
+        {
+            itemUnderTest.ShouldMatch(expected, MatchMode.IgnoreDefaultPropertiesInExpectedModel);
+        }
+
+        public static void ShouldMatch<T>(this T itemUnderTest, T expected)
+        {
+            itemUnderTest.ShouldMatch(expected, MatchMode.Strict);
+        }
+
+        private static void ShouldMatch<T>(this T itemUnderTest, T expected, MatchMode mode)
         {
             var exceptionList = new StringBuilder();
 
