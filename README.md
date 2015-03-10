@@ -48,5 +48,5 @@ result.ShouldContainAnItemMatching(expectedResult);
 
 #### Coming soon..
 
-- Collection assertion only matches using strict match, allow matching on non-default fields only
-- Version ShouldMatchNonDefaultFields that actually allows you to check a default field in the model. For example, I might wish to assert that a bool is ``false`` without having to assert the whole model.
+- Collection assertion currently only matches using strict match, allow matching on non-default fields only.
+- Some version ShouldMatchNonDefaultFields that actually allows you to check a default field in the model. For example, I might wish to assert that a bool is ``false`` without having to assert the whole model.
