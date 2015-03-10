@@ -45,8 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SimpleItemAssertions.cs" />
+    <Compile Include="SimpleItemAssertions\StrictMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleItemAssertions\IgnoreDefaultPropertiesInExpectedModelMode.cs" />
     <Compile Include="TestModels\SimpleModel.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -8,5 +8,6 @@
         public int IntProperty { get; set; }
         public decimal DecimalProperty { get; set; }
         public Guid GuidProperty { get; set; }
+        public bool BoolType { get; set; }
     }
 }

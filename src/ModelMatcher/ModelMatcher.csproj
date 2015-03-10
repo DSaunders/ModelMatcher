@@ -39,7 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\DidNotMatchException.cs" />
+    <Compile Include="Enums\MatchMode.cs" />
+    <Compile Include="Exceptions\DidNotMatch.cs" />
     <Compile Include="Extensions\ModelMatcherExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
