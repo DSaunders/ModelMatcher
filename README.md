@@ -48,6 +48,8 @@ result.ShouldContainAnItemMatching(expectedResult);
 
 #### Coming soon..
 
+- Support complex models, currently only supports models one level deep
+- Remove Activator.CreateInstance, which is used to generate a default value for a property when using ShouldMatchNonDefaultFields
 - Collection assertion currently only matches using strict match, allow matching on non-default fields only.
 - Some version ShouldMatchNonDefaultFields that actually allows you to check a default field in the model. For example, I might wish to assert that a bool is ``false`` without having to assert the whole model.
 - Assert number of matching items in collection, e.g. ShouldContainItemsMatching(expected, noResultsExpected)
