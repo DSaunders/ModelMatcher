@@ -1,7 +1,3 @@
-# ModelMatcher
-
-## The problem
-
 Asserting that a POCO has the values you expect is ugly:
 
 ```csharp
@@ -21,7 +17,7 @@ var resultCollection = myApi.Call();
 resultCollection.ShouldContain(x => x.Field1 == "Some Value" && x.Field2 == 123 && x.Field3 == false etc..); 
 ```
 
-## Introducing ModelMatcher
+# Introducing ModelMatcher
 
 **ModelMatcher** makes asserting on your models easy.
 
