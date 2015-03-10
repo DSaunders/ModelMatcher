@@ -22,13 +22,13 @@ result.ShouldMatch(expectedResult);
 ```csharp
 var result = myApi.Call();
 
+// We only care that Field2 matches, ignore everything else
 var expectedResult = new MyModel
 {
     Field2 = 123,
 };
 
-// Only checks Field2
-result.ShouldMatch(expectedResult, MatchMode.IgnoreDefaultPropertiesInExpectedModel);
+result.ShouldMatchNonDefaultFields(expectedResult);
 ```
 
 ### Check for a matching item in a collection
