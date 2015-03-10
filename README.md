@@ -2,7 +2,7 @@
 
 ## The problem
 
-Asserting that a poco has the fields you expect is ugly:
+Asserting that a POCO has the values you expect is ugly:
 
 ```csharp
 var result = myApi.Call();
