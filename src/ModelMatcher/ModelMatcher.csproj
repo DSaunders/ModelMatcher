@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Enums\MatchMode.cs" />
     <Compile Include="Exceptions\DidNotMatch.cs" />
+    <Compile Include="Exceptions\NoMatchingItemInCollection.cs" />
     <Compile Include="Matcher\SingleItemMatcher.cs" />
     <Compile Include="Models\MatchResult.cs" />
     <Compile Include="Extensions\ModelMatcherExtensions.cs" />
