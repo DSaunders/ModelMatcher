@@ -37,7 +37,7 @@ result.ShouldMatchNonDefaultProperties(expectedResult);
 
 ## Collections
 
-#### Check for a matching items in a collection
+#### Check for a matching item in a collection
 
 ```csharp
 var resultCollection = myApi.Call();
@@ -52,7 +52,7 @@ var expectedResult = new MyModel
 resultCollection.ShouldContainAMatch(expectedResult);
 ```
 
-#### Only non-default properies in the expected model must match
+#### Only non-default properties in the expected model must match
 
 ```csharp
 var resultCollection = myApi.Call();
@@ -125,19 +125,19 @@ var result = myApi.Call();
 var expectedResult = new MyModel
 {
     Property2 = 123,
-    
-    // This would normally be ignored, as it is the default value
     Property3 = false
 };
 
 result.ShouldMatchNonDefaultProperties(expectedResult, new[]
 	{
-		Match.This(() => expectedResult.Property2)
+		// Propety2 would normally be ignored, as it is set to the default value
+		// in the expected model. Force ModelMatcher to check it.
+		Match.This(() => expectedResult.Property3)
 	});
 ```
 
 
-#### Coming soon..
+### Coming soon..
 
 - Support more complex models, currently only supports models one level deep
 - Conditional model matching for lists
