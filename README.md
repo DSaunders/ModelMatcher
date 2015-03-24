@@ -51,7 +51,7 @@ resultCollection.ShouldContainMatches(expectedResult, Matches.Two);
 
 ## Conditional Matching
 
-For more control over which properties to verify.
+For more control over how to verify properties:
 
 ```csharp
 var result = myApi.Call();
