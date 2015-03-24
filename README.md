@@ -55,9 +55,7 @@ var resultCollection = myApi.Call();
 
 var expectedResult = new MyModel
 {
-    Property1 = "Some Value",
-    Property2 = 123,
-    Property3 = false
+    Property1 = "Some Value"
 };
 
 result.ShouldContainAMatchOfNonDefaultProperties(expectedResult);
@@ -85,9 +83,7 @@ var resultCollection = myApi.Call();
 
 var expectedResult = new MyModel
 {
-    Property1 = "Some Value",
-    Property2 = 123,
-    Property3 = false
+    Property1 = "Some Value"
 };
 
 result.ShouldContainMatchesOfNonDefaultProperties(expectedResult, Matches.Three);
@@ -115,6 +111,26 @@ model.ShouldMatch(expectedResult, new[]
 	{
 		Ignore.This(() => expectedResult.Property1),
 		Ignore.This(() => expectedResult.Property3)
+	});
+```
+
+Match only the non-default properties, with some exceptions:
+
+```csharp
+var result = myApi.Call();
+
+// We only care that Property2 matches, ignore everything else
+var expectedResult = new MyModel
+{
+    Property2 = 123,
+
+	// This would normally be ignored, as it is the default value
+	Property3 = false
+};
+
+result.ShouldMatchNonDefaultProperties(expectedResult, new[]
+	{
+		Match.This(() => expectedResult.Property2)
 	});
 ```
 
