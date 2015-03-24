@@ -1,12 +1,8 @@
-# Introducing ModelMatcher
-
 **ModelMatcher** makes vertifying models in your unit tests easier and cleaner. 
 
-No more Linq statements to assert that an item is in a collection and no need for for ten lines of asserts just to check that all of the properties on a model are correct.
+No more Linq statements to assert that an item is in a collection, and no need for for ten lines of assert statements just to check that all of the properties on a model are correct.
 
-## Single items
-
-#### Assert that a model has the values you expect
+## Match single items ...
 
 ```csharp
 var result = myApi.Call();
@@ -21,23 +17,9 @@ var expectedResult = new MyModel
 result.ShouldMatch(expectedResult);
 ```
 
-#### Compare only the non-default properties in the expected model
+## .. or collections
 
-```csharp
-var result = myApi.Call();
-
-// We only care that Property2 matches, ignore everything else
-var expectedResult = new MyModel
-{
-    Property2 = 123,
-};
-
-result.ShouldMatchNonDefaultProperties(expectedResult);
-```
-
-## Collections
-
-#### Check for a matching item in a collection
+One match ...
 
 ```csharp
 var resultCollection = myApi.Call();
@@ -52,20 +34,7 @@ var expectedResult = new MyModel
 resultCollection.ShouldContainAMatch(expectedResult);
 ```
 
-#### Check for an item in a collection, using only the non-default properties in the expected model
-
-```csharp
-var resultCollection = myApi.Call();
-
-var expectedResult = new MyModel
-{
-    Property1 = "Some Value"
-};
-
-resultCollection.ShouldContainAMatchOfNonDefaultProperties(expectedResult);
-```
-
-#### Check for multiple matching items
+... or multiple matches
 
 ```csharp
 var resultCollection = myApi.Call();
@@ -79,65 +48,3 @@ var expectedResult = new MyModel
 
 resultCollection.ShouldContainMatches(expectedResult, Matches.Two);
 ```
-
-#### Multiple matches of non-default properties only:
-
-```csharp
-var resultCollection = myApi.Call();
-
-var expectedResult = new MyModel
-{
-    Property1 = "Some Value"
-};
-
-resultCollection.ShouldContainMatchesOfNonDefaultProperties(expectedResult, Matches.Three);
-```
-
-## Conditional Model Matching
-
-#### Match the entire model, with some exceptions:
-
-```csharp
-var result = myApi.Call();
-
-var expectedResult = new MyModel
-{
-    Property1 = "Some Value",
-    Property2 = 123,
-    Property3 = false,
-    Property4 = "Another Value"
-    ...
-};
-
-result.ShouldMatch(expectedResult, new[]
-	{
-		Ignore.This(() => expectedResult.Property1),
-		Ignore.This(() => expectedResult.Property3)
-	});
-```
-
-#### Match only the non-default properties, with some exceptions:
-
-```csharp
-var result = myApi.Call();
-
-// We only care that Property2 matches, ignore everything else
-var expectedResult = new MyModel
-{
-    Property2 = 123,
-    Property3 = false
-};
-
-result.ShouldMatchNonDefaultProperties(expectedResult, new[]
-	{
-		// Property3 would normally be ignored, as it is set to the default value
-		// in the expected model. Force ModelMatcher to check it.
-		Match.This(() => expectedResult.Property3)
-	});
-```
-
-
-### Coming soon..
-
-- Support more complex models, currently only supports models one level deep
-- Conditional model matching for lists
