@@ -101,8 +101,7 @@ var expectedResult = new MyModel
     Property1 = "Some Value",
     Property2 = 123,
     Property3 = false,
-	Property4 = "Another Value,
-	...
+    Property4 = "Another Value
 };
 
 result.ShouldContainMatches(expectedResult, Matches.Two);
