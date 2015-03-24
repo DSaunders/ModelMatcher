@@ -39,6 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conditions\Condition.cs" />
+    <Compile Include="Conditions\ConditionType.cs" />
+    <Compile Include="Conditions\Ignore.cs" />
     <Compile Include="Constants\Matches.cs" />
     <Compile Include="Enums\MatchMode.cs" />
     <Compile Include="Exceptions\DidNotMatch.cs" />

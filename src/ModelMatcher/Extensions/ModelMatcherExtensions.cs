@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using Conditions;
     using Enums;
     using Exceptions;
     using Matcher;
@@ -19,6 +20,14 @@
         public static void ShouldMatch<T>(this T itemUnderTest, T expected)
         {
             var matchResult = SingleItemMatcher.MatchSingleItem(itemUnderTest, expected, MatchMode.Strict);
+
+            if (!matchResult.Matches)
+                throw new DidNotMatch(matchResult.Exceptions);
+        }
+
+        public static void ShouldMatch<T>(this T itemUnderTest, T expected, IEnumerable<Condition> conditions)
+        {
+            var matchResult = SingleItemMatcher.MatchSingleItem(itemUnderTest, expected, MatchMode.Strict, conditions);
 
             if (!matchResult.Matches)
                 throw new DidNotMatch(matchResult.Exceptions);

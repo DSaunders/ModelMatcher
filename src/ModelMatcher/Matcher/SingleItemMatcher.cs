@@ -1,8 +1,11 @@
 ﻿namespace ModelMatcher.Matcher
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Reflection;
     using System.Text;
+    using Conditions;
     using Enums;
     using Models;
 
@@ -10,8 +13,10 @@
     {
         private static readonly string ExceptionText = "Expected property {0} to be \"{1}\" but was \"{2}\"" + Environment.NewLine;
 
-        internal static MatchResult MatchSingleItem<T>(T itemUnderTest, T expected, MatchMode mode)
+        internal static MatchResult MatchSingleItem<T>(T itemUnderTest, T expected, MatchMode mode, IEnumerable<Condition> conditions = null)
         {
+            conditions = conditions ?? Enumerable.Empty<Condition>();
+
             var matchResult = new MatchResult { Matches = true };
 
             var exceptionList = new StringBuilder();
@@ -23,6 +28,11 @@
                 var expectedValue = propertyInfo.GetValue(expected);
                 if (!itemUnderTestValue.Equals(expectedValue))
                 {
+                    // See if we have an conditions, and if so, are we ignoring this property?
+                    var matchingCondition = conditions.FirstOrDefault(c => c.PropertyName == propertyInfo.Name);
+                    if (matchingCondition != null && matchingCondition.Type == ConditionType.Ignore)
+                        continue;
+                    
                     if (mode == MatchMode.IgnoreDefaultProperties)
                     {
                         // Create a default version of this property
