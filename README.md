@@ -130,7 +130,7 @@ var expectedResult = new MyModel
 
 result.ShouldMatchNonDefaultProperties(expectedResult, new[]
 	{
-		// Propety2 would normally be ignored, as it is set to the default value
+		// Propety3 would normally be ignored, as it is set to the default value
 		// in the expected model. Force ModelMatcher to check it.
 		Match.This(() => expectedResult.Property3)
 	});
