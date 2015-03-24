@@ -1,6 +1,8 @@
 # Introducing ModelMatcher
 
-**ModelMatcher** makes asserting on your models easier and cleaner. No more Linq statements to assert that an item is in a collection and no need for for ten lines of asserts just to check that all of the properties on a model are correct.
+**ModelMatcher** makes asserting on your models easier and cleaner. 
+
+No more Linq statements to assert that an item is in a collection and no need for for ten lines of asserts just to check that all of the properties on a model are correct.
 
 ## Single items
 
