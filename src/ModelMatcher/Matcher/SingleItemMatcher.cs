@@ -9,6 +9,9 @@
     using Enums;
     using Models;
 
+
+    // TODO: Refactor this, could be much nicer
+
     internal static class SingleItemMatcher
     {
         private static readonly string ExceptionText = "Expected property {0} to be \"{1}\" but was \"{2}\"" + Environment.NewLine;
@@ -27,21 +30,42 @@
                 var itemUnderTestValue = propertyInfo.GetValue(itemUnderTest);
                 var expectedValue = propertyInfo.GetValue(expected);
 
-                // Item doesn't match.. handle it.
-                if (!itemUnderTestValue.Equals(expectedValue))
+                // How should we handle this?
+                var matchingCondition = conditions.FirstOrDefault(c => c.PropertyName == propertyInfo.Name);
+                if (matchingCondition != null)
                 {
-                    // If there is a condition for this, use that in place of default logic
-                    var matchingCondition = conditions.FirstOrDefault(c => c.PropertyName == propertyInfo.Name);
-                    if (matchingCondition != null)
+                    switch (matchingCondition.Type)
                     {
-                        switch (matchingCondition.Type)
-                        {
-                            case ConditionType.Ignore:
-                                continue;
-                        }
+                        case ConditionType.Ignore:
+                            continue;
 
+                        case ConditionType.IgnoreCase:
+                            {
+                                if (itemUnderTestValue.ToString()
+                                    .Equals(expectedValue.ToString(), StringComparison.OrdinalIgnoreCase))
+                                    continue;
+
+                                break;
+                            }
+
+                        case ConditionType.IfNotNull:
+                            if (itemUnderTestValue != null)
+                                continue;
+                            break;
+
+                        case ConditionType.Match:
+                            if (itemUnderTestValue.Equals(expectedValue))
+                                continue;
+                            break;
                     }
-                    else if (mode == MatchMode.IgnoreDefaultProperties)
+
+                }
+                else if (itemUnderTestValue != null)
+                {
+                    if (itemUnderTestValue.Equals(expectedValue))
+                        continue;
+
+                    if (mode == MatchMode.IgnoreDefaultProperties)
                     {
                         // Create a default version of this property
                         var defaultValue = propertyInfo.PropertyType.IsValueType
@@ -51,12 +75,19 @@
                         // Ignore this property if it has a default value
                         if (expectedValue == null || expectedValue.Equals(defaultValue))
                             continue;
-                    }
 
-                    // If we get here, we should have matched but didn't
-                    matchResult.Matches = false;
-                    exceptionList.AppendFormat(ExceptionText, propertyInfo.Name, expectedValue, itemUnderTestValue);
+
+                    }
+                    else if (mode == MatchMode.Strict)
+                    {
+                        if (itemUnderTestValue.Equals(expectedValue))
+                            continue;
+                    }
                 }
+
+                // If we get here, we should have matched but didn't
+                matchResult.Matches = false;
+                exceptionList.AppendFormat(ExceptionText, propertyInfo.Name, expectedValue, itemUnderTestValue);
             }
 
             matchResult.Exceptions = exceptionList.ToString();

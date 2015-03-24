@@ -4,5 +4,7 @@
     {
         Ignore,
         Match,
+        IgnoreCase,
+        IfNotNull,
     }
 }
