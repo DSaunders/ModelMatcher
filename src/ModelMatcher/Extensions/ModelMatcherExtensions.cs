@@ -1,6 +1,5 @@
 ﻿namespace ModelMatcher.Extensions
 {
-    using System;
     using System.Collections.Generic;
     using Conditions;
     using Enums;
@@ -12,6 +11,14 @@
         public static void ShouldMatchNonDefaultProperties<T>(this T itemUnderTest, T expected)
         {
             var matchResult = SingleItemMatcher.MatchSingleItem(itemUnderTest, expected, MatchMode.IgnoreDefaultProperties);
+
+            if (!matchResult.Matches)
+                throw new DidNotMatch(matchResult.Exceptions);
+        }
+
+        public static void ShouldMatchNonDefaultProperties<T>(this T itemUnderTest, T expected, IEnumerable<Condition> conditions)
+        {
+            var matchResult = SingleItemMatcher.MatchSingleItem(itemUnderTest, expected, MatchMode.IgnoreDefaultProperties, conditions);
 
             if (!matchResult.Matches)
                 throw new DidNotMatch(matchResult.Exceptions);
@@ -73,6 +80,5 @@
             throw new CollectionDoesNotMatch(message);
 
         }
-
     }
 }

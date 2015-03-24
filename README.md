@@ -93,8 +93,33 @@ var expectedResult = new MyModel
 result.ShouldContainMatchesOfNonDefaultProperties(expectedResult, Matches.Three);
 ```
 
+### Conditional Model Matching
+
+Match the entire model, with some exceptions:
+
+```csharp
+var resultCollection = myApi.Call();
+
+var expectedResult = new MyModel
+{
+    Property1 = "Some Value",
+    Property2 = 123,
+    Property3 = false,
+	Property4 = "Another Value,
+	...
+};
+
+result.ShouldContainMatches(expectedResult, Matches.Two);
+
+model.ShouldMatch(expectedResult, new[]
+	{
+		Ignore.This(() => expectedResult.Property1),
+		Ignore.This(() => expectedResult.Property3)
+	});
+```
+
 
 #### Coming soon..
 
 - Support more complex models, currently only supports models one level deep
-- Partial model matching on non default fields, for example I might wish to assert a bool is False without specifying the whole model. As 'false' is also default(bool), I have to use Strict mode and check the entire model.
+- Conditional model matching for lists

@@ -3,6 +3,6 @@
     public enum ConditionType
     {
         Ignore,
-        Match
+        Match,
     }
 }

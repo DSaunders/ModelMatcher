@@ -26,30 +26,36 @@
             {
                 var itemUnderTestValue = propertyInfo.GetValue(itemUnderTest);
                 var expectedValue = propertyInfo.GetValue(expected);
+
+                // Item doesn't match.. handle it.
                 if (!itemUnderTestValue.Equals(expectedValue))
                 {
-                    // See if we have an conditions, and if so, are we ignoring this property?
+                    // If there is a condition for this, use that in place of default logic
                     var matchingCondition = conditions.FirstOrDefault(c => c.PropertyName == propertyInfo.Name);
-                    if (matchingCondition != null && matchingCondition.Type == ConditionType.Ignore)
-                        continue;
-                    
-                    if (mode == MatchMode.IgnoreDefaultProperties)
+                    if (matchingCondition != null)
+                    {
+                        switch (matchingCondition.Type)
+                        {
+                            case ConditionType.Ignore:
+                                continue;
+                        }
+
+                    }
+                    else if (mode == MatchMode.IgnoreDefaultProperties)
                     {
                         // Create a default version of this property
-                        object defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+                        var defaultValue = propertyInfo.PropertyType.IsValueType
+                            ? Activator.CreateInstance(propertyInfo.PropertyType)
+                            : null;
 
                         // Ignore this property if it has a default value
                         if (expectedValue == null || expectedValue.Equals(defaultValue))
                             continue;
+                    }
 
-                        matchResult.Matches = false;
-                        exceptionList.AppendFormat(ExceptionText, propertyInfo.Name, expectedValue, itemUnderTestValue);
-                    }
-                    else
-                    {
-                        matchResult.Matches = false;
-                        exceptionList.AppendFormat(ExceptionText, propertyInfo.Name, expectedValue, itemUnderTestValue);
-                    }
+                    // If we get here, we should have matched but didn't
+                    matchResult.Matches = false;
+                    exceptionList.AppendFormat(ExceptionText, propertyInfo.Name, expectedValue, itemUnderTestValue);
                 }
             }
 
