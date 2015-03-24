@@ -4,7 +4,7 @@
 
 ## Single items
 
-### Assert that a model has the values you expect
+#### Assert that a model has the values you expect
 
 ```csharp
 var result = myApi.Call();
@@ -19,7 +19,7 @@ var expectedResult = new MyModel
 result.ShouldMatch(expectedResult);
 ```
 
-### Compare only the non-default properties in the expected model
+#### Compare only the non-default properties in the expected model
 
 ```csharp
 var result = myApi.Call();
@@ -35,7 +35,7 @@ result.ShouldMatchNonDefaultProperties(expectedResult);
 
 ## Collections
 
-### Check for a matching items in a collection
+#### Check for a matching items in a collection
 
 ```csharp
 var resultCollection = myApi.Call();
@@ -50,7 +50,7 @@ var expectedResult = new MyModel
 resultCollection.ShouldContainAMatch(expectedResult);
 ```
 
-### Only non-default properies in the expected model must match
+#### Only non-default properies in the expected model must match
 
 ```csharp
 var resultCollection = myApi.Call();
@@ -63,7 +63,7 @@ var expectedResult = new MyModel
 resultCollection.ShouldContainAMatchOfNonDefaultProperties(expectedResult);
 ```
 
-### Check for multiple matching items
+#### Check for multiple matching items
 
 ```csharp
 var resultCollection = myApi.Call();
@@ -78,7 +78,7 @@ var expectedResult = new MyModel
 resultCollection.ShouldContainMatches(expectedResult, Matches.Two);
 ```
 
-## Multiple matches of non-default properties only:
+#### Multiple matches of non-default properties only:
 
 ```csharp
 var resultCollection = myApi.Call();
@@ -91,9 +91,9 @@ var expectedResult = new MyModel
 resultCollection.ShouldContainMatchesOfNonDefaultProperties(expectedResult, Matches.Three);
 ```
 
-### Conditional Model Matching
+## Conditional Model Matching
 
-## Match the entire model, with some exceptions:
+#### Match the entire model, with some exceptions:
 
 ```csharp
 var result = myApi.Call();
@@ -114,7 +114,7 @@ result.ShouldMatch(expectedResult, new[]
 	});
 ```
 
-Match only the non-default properties, with some exceptions:
+#### Match only the non-default properties, with some exceptions:
 
 ```csharp
 var result = myApi.Call();
