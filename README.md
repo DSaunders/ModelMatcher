@@ -52,7 +52,7 @@ var expectedResult = new MyModel
 resultCollection.ShouldContainAMatch(expectedResult);
 ```
 
-#### Only non-default properties in the expected model must match
+#### Check for an item in a collection, using only the non-default properties in the expected model
 
 ```csharp
 var resultCollection = myApi.Call();
