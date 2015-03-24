@@ -1,8 +1,8 @@
 # Introducing ModelMatcher
 
-**ModelMatcher** makes asserting on your models easier and cleaner.
+**ModelMatcher** makes asserting on your models easier and cleaner. No more Linq statements to assert that an item is in a collection and no need for for ten lines of asserts just to check that all of the properties on a model are correct.
 
-### Assert that a model is as expected 
+### Assert that a model has the values you expect
 
 ```csharp
 var result = myApi.Call();
@@ -62,3 +62,10 @@ var expectedResult = new MyModel
 
 result.ShouldContainAMatchOfNonDefaultProperties(expectedResult);
 ```
+
+#### Coming soon..
+
+- Support more complex models, currently only supports models one level deep
+- Some version ShouldMatchNonDefaultFields that actually allows you to check a default field in the model. For example, I might wish to assert that a bool is ``false`` without having to assert the whole model.
+
+
