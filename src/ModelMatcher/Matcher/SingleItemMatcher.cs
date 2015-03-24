@@ -23,7 +23,7 @@
                 var expectedValue = propertyInfo.GetValue(expected);
                 if (!itemUnderTestValue.Equals(expectedValue))
                 {
-                    if (mode == MatchMode.IgnoreDefaultPropertiesInExpectedModel)
+                    if (mode == MatchMode.IgnoreDefaultProperties)
                     {
                         // Create a default version of this property
                         object defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;

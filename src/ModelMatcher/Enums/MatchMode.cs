@@ -3,6 +3,6 @@
     internal enum MatchMode
     {
         Strict,
-        IgnoreDefaultPropertiesInExpectedModel
+        IgnoreDefaultProperties
     }
 }

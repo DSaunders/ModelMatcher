@@ -10,7 +10,7 @@
 
     public partial class SimpleItemAssertions
     {
-        public class IgnoreDefaultPropertiesInExpectedModelMode
+        public class IgnoreDefaultPropertiesMode
         {
             [Fact]
             public void ShouldNotThrowIfAllPropertiesMatch()
@@ -37,7 +37,7 @@
                 };
 
                 // Then
-                Should.NotThrow(() => model.ShouldMatchNonDefaultFields(expectedResult));
+                Should.NotThrow(() => model.ShouldMatchNonDefaultProperties(expectedResult));
             }
 
             [Fact]
@@ -65,7 +65,7 @@
                 };
 
                 // Then
-                Should.NotThrow(() => model.ShouldMatchNonDefaultFields(expectedResult));
+                Should.NotThrow(() => model.ShouldMatchNonDefaultProperties(expectedResult));
             }
 
             [Fact]
@@ -93,7 +93,7 @@
                 };
 
                 // Then
-                Should.Throw<DidNotMatch>(() => model.ShouldMatchNonDefaultFields(expectedResult));
+                Should.Throw<DidNotMatch>(() => model.ShouldMatchNonDefaultProperties(expectedResult));
             }
 
             [Fact]
@@ -118,7 +118,7 @@
                     StringProperty = default(string),
                     BoolType = default(bool)
                 };
-                var exception = Record.Exception(() => model.ShouldMatchNonDefaultFields(expectedResult));
+                var exception = Record.Exception(() => model.ShouldMatchNonDefaultProperties(expectedResult));
 
                 // Then
                 exception.Message.ShouldContain("Expected property GuidProperty to be \"49934b49-1cc3-443d-a89a-23496708f64b\" but was \"5319ca84-12f8-4d1c-a773-af2a5bbb0d1f\"" + Environment.NewLine);

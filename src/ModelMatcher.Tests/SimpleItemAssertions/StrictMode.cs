@@ -152,6 +152,32 @@
                 exception.Message.ShouldContain("Expected property StringProperty to be \"Goodbye, World\" but was \"Hello, World\"" + Environment.NewLine);
                 exception.Message.ShouldContain("Expected property BoolType to be \"false\" but was \"true\"" + Environment.NewLine);
             }
+
+            [Fact]
+            public void ShouldNotIgnoreDefaultProperties()
+            {
+                // Given
+                const string guidString = "49934b49-1cc3-443d-a89a-23496708f64b";
+                var model = new SimpleModel
+                {
+                    DecimalProperty = 123m,
+                    GuidProperty = Guid.Parse(guidString),
+                    IntProperty = 345,
+                    StringProperty = "Hello, World"
+                };
+
+                // When
+                var expectedResult = new SimpleModel
+                {
+                    DecimalProperty = 123m,
+                    GuidProperty = Guid.Parse(guidString),
+                    IntProperty = 345,
+                    StringProperty = default(string)
+                };
+
+                // Then
+                Should.Throw<DidNotMatch>(() => model.ShouldMatch(expectedResult));
+            }
         }
     }
 }

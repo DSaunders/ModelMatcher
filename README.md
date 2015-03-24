@@ -9,39 +9,56 @@ var result = myApi.Call();
 
 var expectedResult = new MyModel
 {
-    Field1 = "Some Value",
-    Field2 = 123,
-    Field3 = false
+    Property1 = "Some Value",
+    Property2 = 123,
+    Property3 = false
 };
 
 result.ShouldMatch(expectedResult);
 ```
 
-### Compare only the non-default fields in the expected model
+### Compare only the non-default properties in the expected model
 
 ```csharp
 var result = myApi.Call();
 
-// We only care that Field2 matches, ignore everything else
+// We only care that Property2 matches, ignore everything else
 var expectedResult = new MyModel
 {
-    Field2 = 123,
+    Property2 = 123,
 };
 
-result.ShouldMatchNonDefaultFields(expectedResult);
+result.ShouldMatchNonDefaultProperties(expectedResult);
 ```
 
 ### Check for a matching item in a collection
+
+All properies must match:
 
 ```csharp
 var resultCollection = myApi.Call();
 
 var expectedResult = new MyModel
 {
-    Field1 = "Some Value",
-    Field2 = 123,
-    Field3 = false
+    Property1 = "Some Value",
+    Property2 = 123,
+    Property3 = false
 };
 
-result.ShouldContainAnItemMatching(expectedResult);
+result.ShouldContainAMatch(expectedResult);
+```
+
+Only non-default properies in the expected model must match:
+
+```csharp
+var resultCollection = myApi.Call();
+
+var expectedResult = new MyModel
+{
+    Property1 = "Some Value",
+    Property2 = 123,
+    Property3 = false
+};
+
+result.ShouldContainAMatchOfNonDefaultProperties(expectedResult);
 ```
