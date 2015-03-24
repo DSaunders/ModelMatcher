@@ -31,7 +31,7 @@ var expectedResult = new MyModel
 result.ShouldMatchNonDefaultProperties(expectedResult);
 ```
 
-### Check for a matching item in a collection
+### Check for a matching items in a collection
 
 All properies must match:
 
@@ -63,9 +63,38 @@ var expectedResult = new MyModel
 result.ShouldContainAMatchOfNonDefaultProperties(expectedResult);
 ```
 
+Multiple matches are expected:
+
+```csharp
+var resultCollection = myApi.Call();
+
+var expectedResult = new MyModel
+{
+    Property1 = "Some Value",
+    Property2 = 123,
+    Property3 = false
+};
+
+result.ShouldContainMatches(expectedResult, Matches.Two);
+```
+
+Multiple matches of non-default properties only:
+
+```csharp
+var resultCollection = myApi.Call();
+
+var expectedResult = new MyModel
+{
+    Property1 = "Some Value",
+    Property2 = 123,
+    Property3 = false
+};
+
+result.ShouldContainMatchesOfNonDefaultProperties(expectedResult, Matches.Three);
+```
+
+
 #### Coming soon..
 
 - Support more complex models, currently only supports models one level deep
-- Some version ShouldMatchNonDefaultFields that actually allows you to check a default field in the model. For example, I might wish to assert that a bool is ``false`` without having to assert the whole model.
-
-
+- Partial model matching on non default fields, for example I might wish to assert a bool is False without specifying the whole model. As 'false' is also default(bool), I have to use Strict mode and check the entire model.

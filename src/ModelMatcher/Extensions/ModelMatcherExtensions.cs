@@ -1,5 +1,6 @@
 ﻿namespace ModelMatcher.Extensions
 {
+    using System;
     using System.Collections.Generic;
     using Enums;
     using Exceptions;
@@ -23,29 +24,45 @@
                 throw new DidNotMatch(matchResult.Exceptions);
         }
 
-        public static void ShouldContainAnItemMatching<T>(this IEnumerable<T> list, T expectedItem)
+        public static void ShouldContainAMatch<T>(this IEnumerable<T> list, T expectedItem)
         {
-            ShouldContainMatch(list, expectedItem, MatchMode.Strict);
+            ShouldContainMatch(list, expectedItem, MatchMode.Strict, 1);
         }
 
-        public static void ShouldContainAnItemMatchingNonDefaultPropertiesOf<T>(this IEnumerable<T> list, T expectedItem)
+        public static void ShouldContainAMatchOfNonDefaultProperties<T>(this IEnumerable<T> list, T expectedItem)
         {
-            ShouldContainMatch(list, expectedItem, MatchMode.IgnoreDefaultProperties);
+            ShouldContainMatch(list, expectedItem, MatchMode.IgnoreDefaultProperties, 1);
         }
 
-
-        private static void ShouldContainMatch<T>(IEnumerable<T> list, T expectedItem, MatchMode mode)
+        public static void ShouldContainMatches<T>(this IEnumerable<T> list, T expectedItem, int numberOfMatches)
         {
-            var matchFound = false;
+            ShouldContainMatch(list, expectedItem, MatchMode.Strict, numberOfMatches);
+        }
+
+        public static void ShouldContainMatchesOfNonDefaultProperties<T>(this IEnumerable<T> list, T expectedItem, int numberOfMatches)
+        {
+            ShouldContainMatch(list, expectedItem, MatchMode.IgnoreDefaultProperties, numberOfMatches);
+        }
+        
+        private static void ShouldContainMatch<T>(IEnumerable<T> list, T expectedItem, MatchMode mode, int requiredMatches)
+        {
+            var matches = 0;
 
             foreach (var item in list)
             {
                 if (SingleItemMatcher.MatchSingleItem(item, expectedItem, mode).Matches)
-                    matchFound = true;
+                    matches++;
             }
 
-            if (!matchFound)
-                throw new NoMatchingItemInCollection();
+            if (requiredMatches == matches)
+                return;
+
+            if (requiredMatches == 1)
+                throw new CollectionDoesNotMatch("Could not find a matching item in the collection");
+
+            var message = string.Format("Expected {0} matching items but found {1}", requiredMatches, matches);
+            throw new CollectionDoesNotMatch(message);
+
         }
 
     }
