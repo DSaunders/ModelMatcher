@@ -68,7 +68,7 @@ var expectedResult = new MyModel
 result.ShouldMatch(expectedResult, new[]
 	{
 		Ignore.This(() => expectedResult.Property2),
-		Ignore.IgnoringCase(() => expectedResult.Property4),
+		Match.IgnoringCase(() => expectedResult.Property4),
 	});
 ```
 
