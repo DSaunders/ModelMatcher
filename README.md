@@ -72,7 +72,7 @@ result.ShouldMatch(expectedResult, new[]
 
 ## Non-default matching
 
-Match only the properties that are *not* set to the default value in the expected model. This saves you from specifying every property in the expected model even if it is not important.
+Check only the properties that are *not* set to the default value in the expected model. This saves you from specifying every property in the expected model even if it is not important.
 
 Single items:
 
