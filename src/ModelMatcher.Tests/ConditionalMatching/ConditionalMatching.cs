@@ -1,4 +1,4 @@
-﻿namespace ModelMatcher.Tests.SimpleItemAssertions
+﻿namespace ModelMatcher.Tests.ConditionalMatching
 {
     using System;
     using Conditions;
