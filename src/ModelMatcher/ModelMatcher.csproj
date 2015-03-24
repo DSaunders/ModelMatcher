@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\Matches.cs" />
     <Compile Include="Enums\MatchMode.cs" />
     <Compile Include="Exceptions\DidNotMatch.cs" />
     <Compile Include="Exceptions\CollectionDoesNotMatch.cs" />
