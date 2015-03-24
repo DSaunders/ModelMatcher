@@ -114,7 +114,8 @@ var expectedResult = new MyModel
 resultCollection.ShouldContainMatchesOfNonDefaultProperties(expectedResult, Matches.Three);
 ```
 
-Sometimes you need to use this mode, but match a property that *is* set to the default value. For example, to assert that a ``bool`` is set to ``false``.
+Sometimes you need to use this mode, but assert that a property *is* set to the default value. 
+For example, to assert that a ``bool`` is set to ``false``.
 
 You can do this with conditional matching:
 
@@ -130,8 +131,8 @@ var expectedResult = new MyModel
 
 result.ShouldMatchNonDefaultProperties(expectedResult, new[]
 	{
-		// Property3 would normally be ignored, as it is set to the default value
-		// in the expected model. Force ModelMatcher to check it.
+		// Property3 would otherwise be ignored, as it is set to the default value
+		// in the expected model
 		Match.This(() => expectedResult.Property3)
 	});
 ```
