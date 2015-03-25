@@ -192,4 +192,3 @@ resultCollection.ShouldContainMatchesOfNonDefaultProperties(expectedResult, new[
 ### Coming soon..
 
 - Support more complex models, currently only supports models one level deep
-- Conditional model matching for lists using non-default mode
