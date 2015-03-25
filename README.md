@@ -185,4 +185,4 @@ resultCollection.ShouldContainMatchesOfNonDefaultProperties(expectedResult, new[
 
 ### Coming soon..
 
-- Support more complex models, currently only supports models one level deep
+- Match more complex models by recursively matching any reference types. Currently only inspects the first level of properties.
