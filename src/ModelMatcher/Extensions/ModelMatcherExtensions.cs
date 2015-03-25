@@ -1,8 +1,8 @@
 ﻿namespace ModelMatcher.Extensions
 {
     using System.Collections.Generic;
+    using System.Linq;
     using Conditions;
-    using Enums;
     using Exceptions;
     using Matcher;
 
@@ -10,7 +10,7 @@
     {
         public static void ShouldMatchNonDefaultProperties<T>(this T itemUnderTest, T expected)
         {
-            var matchResult = SingleItemMatcher.MatchSingleItem(itemUnderTest, expected, MatchMode.IgnoreDefaultProperties);
+            var matchResult = SingleItemMatcher.MatchSingleItem(itemUnderTest, expected, MatchCondition.IgnoreIfDefaultInExpectedModel);
 
             if (!matchResult.Matches)
                 throw new DidNotMatch(matchResult.Exceptions);
@@ -18,7 +18,7 @@
 
         public static void ShouldMatchNonDefaultProperties<T>(this T itemUnderTest, T expected, IEnumerable<Condition> conditions)
         {
-            var matchResult = SingleItemMatcher.MatchSingleItem(itemUnderTest, expected, MatchMode.IgnoreDefaultProperties, conditions);
+            var matchResult = SingleItemMatcher.MatchSingleItem(itemUnderTest, expected, MatchCondition.IgnoreIfDefaultInExpectedModel, conditions);
 
             if (!matchResult.Matches)
                 throw new DidNotMatch(matchResult.Exceptions);
@@ -26,7 +26,7 @@
 
         public static void ShouldMatch<T>(this T itemUnderTest, T expected)
         {
-            var matchResult = SingleItemMatcher.MatchSingleItem(itemUnderTest, expected, MatchMode.Strict);
+            var matchResult = SingleItemMatcher.MatchSingleItem(itemUnderTest, expected, MatchCondition.Match);
 
             if (!matchResult.Matches)
                 throw new DidNotMatch(matchResult.Exceptions);
@@ -34,7 +34,7 @@
 
         public static void ShouldMatch<T>(this T itemUnderTest, T expected, IEnumerable<Condition> conditions)
         {
-            var matchResult = SingleItemMatcher.MatchSingleItem(itemUnderTest, expected, MatchMode.Strict, conditions);
+            var matchResult = SingleItemMatcher.MatchSingleItem(itemUnderTest, expected, MatchCondition.Match, conditions);
 
             if (!matchResult.Matches)
                 throw new DidNotMatch(matchResult.Exceptions);
@@ -42,33 +42,28 @@
 
         public static void ShouldContainAMatch<T>(this IEnumerable<T> list, T expectedItem)
         {
-            ShouldContainMatch(list, expectedItem, MatchMode.Strict, 1);
+            ShouldContainMatch(list, expectedItem, MatchCondition.Match, 1);
         }
 
         public static void ShouldContainAMatchOfNonDefaultProperties<T>(this IEnumerable<T> list, T expectedItem)
         {
-            ShouldContainMatch(list, expectedItem, MatchMode.IgnoreDefaultProperties, 1);
+            ShouldContainMatch(list, expectedItem, MatchCondition.IgnoreIfDefaultInExpectedModel, 1);
         }
 
         public static void ShouldContainMatches<T>(this IEnumerable<T> list, T expectedItem, int numberOfMatches)
         {
-            ShouldContainMatch(list, expectedItem, MatchMode.Strict, numberOfMatches);
+            ShouldContainMatch(list, expectedItem, MatchCondition.Match, numberOfMatches);
         }
 
         public static void ShouldContainMatchesOfNonDefaultProperties<T>(this IEnumerable<T> list, T expectedItem, int numberOfMatches)
         {
-            ShouldContainMatch(list, expectedItem, MatchMode.IgnoreDefaultProperties, numberOfMatches);
+            ShouldContainMatch(list, expectedItem, MatchCondition.IgnoreIfDefaultInExpectedModel, numberOfMatches);
         }
         
-        private static void ShouldContainMatch<T>(IEnumerable<T> list, T expectedItem, MatchMode mode, int requiredMatches)
+        private static void ShouldContainMatch<T>(IEnumerable<T> list, T expectedItem, MatchCondition matchCondition, int requiredMatches)
         {
-            var matches = 0;
-
-            foreach (var item in list)
-            {
-                if (SingleItemMatcher.MatchSingleItem(item, expectedItem, mode).Matches)
-                    matches++;
-            }
+            var matches = list.Count(item => 
+                SingleItemMatcher.MatchSingleItem(item, expectedItem, matchCondition).Matches);
 
             if (requiredMatches == matches)
                 return;

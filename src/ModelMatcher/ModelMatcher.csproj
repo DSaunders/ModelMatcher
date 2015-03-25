@@ -40,11 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conditions\Condition.cs" />
-    <Compile Include="Conditions\ConditionType.cs" />
+    <Compile Include="Conditions\MatchCondition.cs" />
     <Compile Include="Conditions\Ignore.cs" />
     <Compile Include="Conditions\Match.cs" />
     <Compile Include="Constants\Matches.cs" />
-    <Compile Include="Enums\MatchMode.cs" />
     <Compile Include="Exceptions\DidNotMatch.cs" />
     <Compile Include="Exceptions\CollectionDoesNotMatch.cs" />
     <Compile Include="Matcher\SingleItemMatcher.cs" />

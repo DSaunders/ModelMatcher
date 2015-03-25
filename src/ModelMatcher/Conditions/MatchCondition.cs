@@ -1,8 +1,9 @@
 ﻿namespace ModelMatcher.Conditions
 {
-    public enum ConditionType
+    public enum MatchCondition
     {
         Ignore,
+        IgnoreIfDefaultInExpectedModel,
         Match,
         IgnoreCase,
         IfNotNull,

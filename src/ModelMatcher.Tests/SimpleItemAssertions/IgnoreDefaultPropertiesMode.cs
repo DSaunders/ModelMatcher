@@ -1,7 +1,6 @@
 ﻿namespace ModelMatcher.Tests.SimpleItemAssertions
 {
     using System;
-    using Enums;
     using Exceptions;
     using Extensions;
     using Shouldly;
@@ -126,6 +125,4 @@
             }
         }
     }
-
-   
 }

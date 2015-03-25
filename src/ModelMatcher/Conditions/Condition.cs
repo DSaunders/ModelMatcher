@@ -2,7 +2,7 @@
 {
     public class Condition
     {
-        public ConditionType Type { get; set; }
+        public MatchCondition Type { get; set; }
         public string PropertyName { get; set; }
     }
 }

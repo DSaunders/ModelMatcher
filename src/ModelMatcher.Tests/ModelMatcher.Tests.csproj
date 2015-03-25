@@ -47,7 +47,7 @@
   <ItemGroup>
     <Compile Include="CollectionAssertions\IgnoreDefaultPropertiesMode.cs" />
     <Compile Include="CollectionAssertions\StrictMode.cs" />
-    <Compile Include="SimpleItemAssertions\ConditionalMatching.cs" />
+    <Compile Include="ConditionalMatching\ConditionalMatching.cs" />
     <Compile Include="SimpleItemAssertions\StrictMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleItemAssertions\IgnoreDefaultPropertiesMode.cs" />

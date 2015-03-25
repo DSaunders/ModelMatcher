@@ -10,7 +10,7 @@
             var member = expression.Body as MemberExpression;
             return new Condition
             {
-                Type = ConditionType.Match,
+                Type = MatchCondition.Match,
                 PropertyName = member.Member.Name
             };
         }
@@ -20,7 +20,7 @@
             var member = expression.Body as MemberExpression;
             return new Condition
             {
-                Type = ConditionType.IgnoreCase,
+                Type = MatchCondition.IgnoreCase,
                 PropertyName = member.Member.Name
             };
         }
@@ -30,7 +30,7 @@
             var member = expression.Body as MemberExpression;
             return new Condition
             {
-                Type = ConditionType.IfNotNull,
+                Type = MatchCondition.IfNotNull,
                 PropertyName = member.Member.Name
             };
         }

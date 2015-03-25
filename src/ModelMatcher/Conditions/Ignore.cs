@@ -10,7 +10,7 @@
             var member = expression.Body as MemberExpression;
             return new Condition
             {
-                Type = ConditionType.Ignore,
+                Type = MatchCondition.Ignore,
                 PropertyName = member.Member.Name
             };
         }
