@@ -1,6 +1,7 @@
 ﻿namespace ModelMatcher.Tests.ConditionalMatching
 {
     using System;
+    using System.Collections.Generic;
     using Conditions;
     using Exceptions;
     using Extensions;
@@ -8,12 +9,41 @@
     using TestModels;
     using Xunit;
 
-    public partial class SimpleItemAssertions
+    public partial class ConditionalMatching
     {
-        public class ConditionalMatching
+        public class SingleItems
         {
             [Fact]
-            public void ShouldNotThrowIfAllMatchExceptIgnoreConditions()
+            public void Should_Not_Throw_If_All_Items_Match()
+            {
+                // Given
+                const string guid1 = "49934b49-1cc3-443d-a89a-23496708f64b";
+                var model = new SimpleModel
+                {
+                    DecimalProperty = 123m,
+                    GuidProperty = Guid.Parse(guid1),
+                    IntProperty = 345,
+                    StringProperty = "Hello, World",
+                    BoolType = true
+                };
+
+                // When
+                var expectedResult = new SimpleModel
+                {
+                    DecimalProperty = 123m,
+                    GuidProperty = Guid.Parse(guid1),
+                    IntProperty = 345,
+                    StringProperty = "Hello, World",
+                    BoolType = true
+                };
+
+                // Then
+                Should.NotThrow(() => model.ShouldMatch(expectedResult, new List<Condition>()));
+
+            }
+
+            [Fact]
+            public void Should_Not_Throw_If_All_Match_Except_Ignore_Conditions()
             {
                 // Given
                 const string guid1 = "49934b49-1cc3-443d-a89a-23496708f64b";
@@ -48,7 +78,7 @@
             }
 
             [Fact]
-            public void ShouldThrowIfDoesNotMatchWithIgnoreConditions()
+            public void Should_Throw_If_Does_Not_Match_With_Ignore_Conditions()
             {
                 // Given
                 const string guid1 = "49934b49-1cc3-443d-a89a-23496708f64b";
@@ -82,7 +112,7 @@
             }
 
             [Fact]
-            public void ShouldNotThrowIfAllMatchExceptIgnoreConditionsAndDefaultsWhenMatchingNonDefaultProperties()
+            public void Should_Not_Throw_If_All_Match_Except_Ignore_Conditions_And_Defaults()
             {
                 // Given
                 const string guid1 = "49934b49-1cc3-443d-a89a-23496708f64b";
@@ -116,7 +146,7 @@
             }
 
             [Fact]
-            public void ShouldThrowIfMatchConditionFailsWhenMatchingNonDefaultProperties()
+            public void Should_Throw_If_Matching_Non_Default_Properties_And_Match_Condition_Fails()
             {
                 // Given
                 const string guid1 = "49934b49-1cc3-443d-a89a-23496708f64b";
@@ -151,7 +181,7 @@
 
 
             [Fact]
-            public void ShouldSupportMultipleConditions()
+            public void Should_Support_Multiple_Match_Conditions()
             {
                 // Given
                 const string guid1 = "49934b49-1cc3-443d-a89a-23496708f64b";
@@ -187,7 +217,7 @@
             }
 
             [Fact]
-            public void ShouldThrowWithMultipleConditionsPassedAndSomeNotSatisfied()
+            public void Should_Throw_With_Multiple_Conditions_Passed_And_Some_Not_Satisfied()
             {
                 // Given
                 const string guid1 = "49934b49-1cc3-443d-a89a-23496708f64b";
@@ -224,7 +254,7 @@
 
 
             [Fact]
-            public void ShouldIgnoreCaseIfConditionApplied()
+            public void Should_Not_Throw_If_String_Case_Does_Not_Match_With_IgnoreCase_Condition()
             {
                 // Given
                 const string guid1 = "49934b49-1cc3-443d-a89a-23496708f64b";
@@ -258,7 +288,7 @@
 
 
             [Fact]
-            public void ShouldMatchObjectsIfNotNullIfConditionApplied()
+            public void Should_Not_Throw_If_Property_Is_Not_Null_If_Condition_Applied()
             {
                 // Given
                 var model = new ComplexModel()

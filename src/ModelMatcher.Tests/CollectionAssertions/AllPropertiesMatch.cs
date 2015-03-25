@@ -11,10 +11,10 @@
 
     public partial class CollectionAssertions
     {
-        public class StrictMode
+        public class AllPropertiesMatch
         {
             [Fact]
-            public void DoesNotThrowIfCollectionContainsMatchingItem()
+            public void Does_Not_Throw_If_Collection_Contains_Matching_Item()
             {
                 // Given
                 const string guidString = "49934b49-1cc3-443d-a89a-23496708f64b";
@@ -53,7 +53,7 @@
             }
 
             [Fact]
-            public void ThrowsIfCollectionDoesNotContainMatchingItem()
+            public void Throws_If_Collection_Does_Not_Contain_Matching_Item()
             {
                 // Given
                 const string guidString = "49934b49-1cc3-443d-a89a-23496708f64b";
@@ -92,7 +92,7 @@
             }
 
             [Fact]
-            public void ThrowswithCorrectExceptionMessageIfCollectionDoesNotContainMatchingItem()
+            public void Throws_With_Correct_Exception_Message_If_Collection_Does_Not_Contain_Matching_Item()
             {
                 // Given
                 const string guidString = "49934b49-1cc3-443d-a89a-23496708f64b";
@@ -132,7 +132,7 @@
             }
 
             [Fact]
-            public void DoesNotIgnoreDefaultProperties()
+            public void Does_Not_Ignore_Default_Properties()
             {
                 // Given
                 const string guidString = "49934b49-1cc3-443d-a89a-23496708f64b";
@@ -171,7 +171,7 @@
             }
 
             [Fact]
-            public void DoesNotThrowIfCollectionContainsCorrectNumberOfMatchingItems()
+            public void Does_Not_Throw_If_Collection_Contains_Correct_Number_Of_Matching_Items()
             {
                 // Given
                 const string guidString = "49934b49-1cc3-443d-a89a-23496708f64b";
@@ -219,7 +219,7 @@
             }
 
             [Fact]
-            public void ThrowsIfCollectionContainsIncorrectNumberOfMatchingItems()
+            public void Throws_If_Collection_Contains_Incorrect_Number_Of_Matching_Items()
             {
                 // Given
                 const string guidString = "49934b49-1cc3-443d-a89a-23496708f64b";
@@ -258,7 +258,7 @@
             }
 
             [Fact]
-            public void ThrowsWithCorrectMessageIfCollectionContainsIncorrectNumberOfMatchingItems()
+            public void Throws_With_Correct_Message_If_Collection_Contains_Incorrect_Number_Of_Matching_Items()
             {
                 // Given
                 const string guidString = "49934b49-1cc3-443d-a89a-23496708f64b";

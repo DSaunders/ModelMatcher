@@ -46,11 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CollectionAssertions\IgnoreDefaultPropertiesMode.cs" />
-    <Compile Include="CollectionAssertions\StrictMode.cs" />
-    <Compile Include="ConditionalMatching\ConditionalMatching.cs" />
-    <Compile Include="SimpleItemAssertions\StrictMode.cs" />
+    <Compile Include="CollectionAssertions\AllPropertiesMatch.cs" />
+    <Compile Include="ConditionalMatching\SingleItems.cs" />
+    <Compile Include="SingleItemAssertions\AllPropertiesMatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimpleItemAssertions\IgnoreDefaultPropertiesMode.cs" />
+    <Compile Include="SingleItemAssertions\NonDefaultPropertiesMatch.cs" />
     <Compile Include="TestModels\ComplexModel.cs" />
     <Compile Include="TestModels\SimpleModel.cs" />
   </ItemGroup>

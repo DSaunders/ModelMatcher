@@ -1,4 +1,4 @@
-﻿namespace ModelMatcher.Tests.SimpleItemAssertions
+﻿namespace ModelMatcher.Tests.SingleItemAssertions
 {
     using System;
     using Exceptions;
@@ -7,12 +7,12 @@
     using TestModels;
     using Xunit;
 
-    public partial class SimpleItemAssertions
+    public partial class SingleItemAssertions
     {
-        public class IgnoreDefaultPropertiesMode
+        public class NonDefaultPropertiesMatch
         {
             [Fact]
-            public void ShouldNotThrowIfAllPropertiesMatch()
+            public void Should_Not_Throw_If_All_Properties_Match()
             {
                 // Given
                 const string guidString = "49934b49-1cc3-443d-a89a-23496708f64b";
@@ -40,7 +40,7 @@
             }
 
             [Fact]
-            public void ShouldNotThrowIfPropertyWithDefaultValueInExpectedModelDoesNotMatch()
+            public void Should_Not_Throw_If_Property_With_Default_Value_In_Expected_Model_Does_Not_Match()
             {
                 // Given
                 const string guidString = "49934b49-1cc3-443d-a89a-23496708f64b";
@@ -68,7 +68,7 @@
             }
 
             [Fact]
-            public void ShouldThrowIfPropertySetInExpectedModelDoesNotMatch()
+            public void Should_Throw_If_Non_Default_Property_In_Expected_Model_Does_Not_Match()
             {
                 // Given
                 const string guidString = "49934b49-1cc3-443d-a89a-23496708f64b";
@@ -96,7 +96,7 @@
             }
 
             [Fact]
-            public void ShouldRecordNonMatchingPropertiesInExceptionMessage()
+            public void Should_Record_Non_Matching_Properties_In_Exception_Message()
             {
                 // Given
                 var model = new SimpleModel

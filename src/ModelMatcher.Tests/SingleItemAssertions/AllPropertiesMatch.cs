@@ -1,4 +1,4 @@
-﻿namespace ModelMatcher.Tests.SimpleItemAssertions
+﻿namespace ModelMatcher.Tests.SingleItemAssertions
 {
     using System;
     using Exceptions;
@@ -7,12 +7,12 @@
     using TestModels;
     using Xunit;
 
-    public partial class SimpleItemAssertions
+    public partial class SingleItemAssertions
     {
-        public class StrictMode
+        public class AllPropertiesMatch
         {
             [Fact]
-            public void ShouldNotThrowIfAllPropertiesMatch()
+            public void Should_Not_Throw_If_All_Properties_Match()
             {
                 // Given
                 const string guidString = "49934b49-1cc3-443d-a89a-23496708f64b";
@@ -40,7 +40,7 @@
             }
 
             [Fact]
-            public void ShouldThrowIfOnePropertyDoesNotMatch()
+            public void Should_Throw_If_One_Property_Does_Not_Match()
             {
                 // Given
                 const string guidString = "49934b49-1cc3-443d-a89a-23496708f64b";
@@ -66,7 +66,7 @@
             }
 
             [Fact]
-            public void ShouldThrowIfMultiplePropertiesDoesNotMatch()
+            public void Should_Throw_If_Multiple_Properties_Do_Not_Match()
             {
                 // Given
                 var model = new SimpleModel
@@ -93,7 +93,7 @@
             }
 
             [Fact]
-            public void ShouldRecordSingleNonMatchingPropertyValueInExceptionMessage()
+            public void Should_Record_Single_Non_Matching_Property_Value_In_Exception_Message()
             {
                 // Given
                 const string guidString = "49934b49-1cc3-443d-a89a-23496708f64b";
@@ -122,7 +122,7 @@
             }
 
             [Fact]
-            public void ShouldRecordMultipleNonMatchingPropertyValuesInExceptionMessage()
+            public void Should_Record_Multiple_Non_Matching_Property_Values_In_Exception_Message()
             {
                 // Given
                 var model = new SimpleModel
@@ -154,7 +154,7 @@
             }
 
             [Fact]
-            public void ShouldNotIgnoreDefaultProperties()
+            public void Should_Not_Ignore_Default_Properties()
             {
                 // Given
                 const string guidString = "49934b49-1cc3-443d-a89a-23496708f64b";
