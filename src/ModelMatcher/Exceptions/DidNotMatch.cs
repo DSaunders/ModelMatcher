@@ -4,7 +4,8 @@
 
     public class DidNotMatch : Exception
     {
-        public DidNotMatch(string message) : base(message)
+        public DidNotMatch(string message)
+            : base(message)
         {
         }
     }

@@ -107,8 +107,7 @@
                     model.ShouldMatch(expectedResult, new[]
                     {
                         Ignore.This(() => expectedResult.GuidProperty)
-                    })
-                    );
+                    }));
             }
 
             [Fact]
@@ -310,9 +309,32 @@
                         Match.IfNotNull(() => expectedResult.Child)
                     })
                     );
+
+            }
+
+            [Fact]
+            public void Should_Throw_Correct_Exception_If_Match_Expression_Invalid()
+            {
+                // Given
+                var model = new ComplexModel()
+                {
+                    Name = "My Model",
+                    Child = new SimpleModel()
+                };
+
+                // When
+                var expectedResult = new ComplexModel()
+                {
+                    Name = "My Model"
+                };
+
+                // Then
+                Should.Throw<InvalidMatchExpression>(() =>
+                    model.ShouldMatch(expectedResult, new[]
+                    {
+                        Match.IfNotNull(() => Guid.NewGuid())
+                    }));
             }
         }
-
-
     }
 }

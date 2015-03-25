@@ -46,9 +46,12 @@
     <Compile Include="Constants\Matches.cs" />
     <Compile Include="Exceptions\DidNotMatch.cs" />
     <Compile Include="Exceptions\CollectionDoesNotMatch.cs" />
-    <Compile Include="Matcher\SingleItemMatcher.cs" />
+    <Compile Include="Exceptions\InvalidMatchExpression.cs" />
+    <Compile Include="Extensions\SingleItemMatchextensions.cs" />
+    <Compile Include="Matchers\CollectionMatcher.cs" />
+    <Compile Include="Matchers\SingleItemMatcher.cs" />
     <Compile Include="Models\MatchResult.cs" />
-    <Compile Include="Extensions\ModelMatcherExtensions.cs" />
+    <Compile Include="Extensions\CollectionMatchExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

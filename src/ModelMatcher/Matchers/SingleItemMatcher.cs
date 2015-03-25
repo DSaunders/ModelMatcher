@@ -1,4 +1,4 @@
-﻿namespace ModelMatcher.Matcher
+﻿namespace ModelMatcher.Matchers
 {
     using System;
     using System.Collections.Generic;
