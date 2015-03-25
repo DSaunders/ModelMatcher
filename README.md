@@ -69,6 +69,7 @@ result.ShouldMatch(expectedResult, new[]
 	{
 		Ignore.This(() => expectedResult.Property2),
 		Match.IgnoringCase(() => expectedResult.Property4),
+		Match.IfNotNull(() => expectedResult.Customer),
 	});
 ```
 
