@@ -164,6 +164,30 @@ result.ShouldMatchNonDefaultProperties(expectedResult, new[]
 	});
 ```
 
+This also works with collections:
+
+```csharp
+var resultCollection = myApi.Call();
+
+// We only care that Property2 matches, ignore everything else
+var expectedResult = new MyModel
+{
+    Property2 = 123,
+    Property3 = false
+};
+
+resultCollection.ShouldContainAMatchOfNonDefaultProperties(expectedResult, new[]
+	{
+		Match.This(() => expectedResult.Property3)
+	});
+
+resultCollection.ShouldContainMatchesOfNonDefaultProperties(expectedResult, new[]
+	{
+		Match.This(() => expectedResult.Property3)
+	},
+	Matches.Two);
+```
+
 
 ### Coming soon..
 

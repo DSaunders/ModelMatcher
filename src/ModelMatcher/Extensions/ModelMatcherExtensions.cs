@@ -50,10 +50,7 @@
             ShouldContainMatch(list, expectedItem, MatchCondition.Match, 1, conditions);
         }
 
-        public static void ShouldContainAMatchOfNonDefaultProperties<T>(this IEnumerable<T> list, T expectedItem)
-        {
-            ShouldContainMatch(list, expectedItem, MatchCondition.IgnoreIfDefaultInExpectedModel, 1);
-        }
+        
 
         public static void ShouldContainMatches<T>(this IEnumerable<T> list, T expectedItem,  int numberOfMatches)
         {
@@ -64,10 +61,26 @@
         {
             ShouldContainMatch(list, expectedItem, MatchCondition.Match, numberOfMatches, conditions);
         }
+
+
+        public static void ShouldContainAMatchOfNonDefaultProperties<T>(this IEnumerable<T> list, T expectedItem)
+        {
+            ShouldContainMatch(list, expectedItem, MatchCondition.IgnoreIfDefaultInExpectedModel, 1);
+        }
+
+        public static void ShouldContainAMatchOfNonDefaultProperties<T>(this IEnumerable<T> list, T expectedItem, IEnumerable<Condition> conditions)
+        {
+            ShouldContainMatch(list, expectedItem, MatchCondition.IgnoreIfDefaultInExpectedModel, 1, conditions);
+        }
         
         public static void ShouldContainMatchesOfNonDefaultProperties<T>(this IEnumerable<T> list, T expectedItem, int numberOfMatches)
         {
             ShouldContainMatch(list, expectedItem, MatchCondition.IgnoreIfDefaultInExpectedModel, numberOfMatches);
+        }
+
+        public static void ShouldContainMatchesOfNonDefaultProperties<T>(this IEnumerable<T> list, T expectedItem, IEnumerable<Condition> conditions, int numberOfMatches)
+        {
+            ShouldContainMatch(list, expectedItem, MatchCondition.IgnoreIfDefaultInExpectedModel, numberOfMatches, conditions);
         }
         
         private static void ShouldContainMatch<T>(IEnumerable<T> list, T expectedItem, MatchCondition matchCondition, int requiredMatches, IEnumerable<Condition> conditions = null)
