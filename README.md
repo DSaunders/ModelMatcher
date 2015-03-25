@@ -87,11 +87,13 @@ var expectedResult = new MyModel
     ...
 };
 
+// One matching item
 result.ShouldContainAMatch(expectedResult, new[]
 	{
 		Ignore.This(() => expectedResult.Property2),
 	});
 
+// A correct number of matching items
 result.ShouldContainMatches(expectedResult, new[]
 	{
 		Ignore.This(() => expectedResult.Property2),
@@ -127,19 +129,13 @@ var expectedResult = new MyModel
     Property1 = "Some Value"
 };
 
+// Look for one matching item
 resultCollection.ShouldContainAMatchOfNonDefaultProperties(expectedResult);
-```
 
-```csharp
-var resultCollection = myApi.Call();
-
-var expectedResult = new MyModel
-{
-    Property1 = "Some Value"
-};
-
+// A number of matching items
 resultCollection.ShouldContainMatchesOfNonDefaultProperties(expectedResult, Matches.Three);
 ```
+
 
 Sometimes you need to use this mode, but assert that a property *is* set to the default value. 
 For example, to assert that a ``bool`` is set to ``false``.
