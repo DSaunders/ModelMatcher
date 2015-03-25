@@ -1,4 +1,4 @@
-﻿namespace ModelMatcher.Tests.SingleItemAssertions
+﻿namespace ModelMatcher.Tests.SingleItems
 {
     using System;
     using Exceptions;
@@ -7,7 +7,7 @@
     using TestModels;
     using Xunit;
 
-    public partial class SingleItemAssertions
+    public partial class SingleItems
     {
         public class AllPropertiesMatch
         {
@@ -22,7 +22,7 @@
                     GuidProperty = Guid.Parse(guidString),
                     IntProperty = 345,
                     StringProperty = "Hello, World",
-                    BoolType = true
+                    BoolProperty = true
                 };
 
                 // When
@@ -32,7 +32,7 @@
                     GuidProperty = Guid.Parse(guidString),
                     IntProperty = 345,
                     StringProperty = "Hello, World",
-                    BoolType = true
+                    BoolProperty = true
                 };
 
                 // Then
@@ -75,7 +75,7 @@
                     GuidProperty = Guid.NewGuid(),
                     IntProperty = 345,
                     StringProperty = "Hello, World",
-                    BoolType = false
+                    BoolProperty = false
                 };
 
                 // When
@@ -85,7 +85,7 @@
                     GuidProperty = Guid.NewGuid(),
                     IntProperty = 999,
                     StringProperty = "Goodbye, World",
-                    BoolType = true
+                    BoolProperty = true
                 };
 
                 // Then
@@ -131,7 +131,7 @@
                     GuidProperty = Guid.Parse("5319ca84-12f8-4d1c-a773-af2a5bbb0d1f"),
                     IntProperty = 345,
                     StringProperty = "Hello, World",
-                    BoolType = true
+                    BoolProperty = true
                 };
 
                 // When
@@ -141,7 +141,7 @@
                     GuidProperty = Guid.Parse("9e09fed2-2070-4339-a9d1-2b824fd38bf7"),
                     IntProperty = 999,
                     StringProperty = "Goodbye, World",
-                    BoolType = false
+                    BoolProperty = false
                 };
                 var exception = Record.Exception(() => model.ShouldMatch(expectedResult));
 
@@ -150,7 +150,7 @@
                 exception.Message.ShouldContain("Expected property GuidProperty to be \"9e09fed2-2070-4339-a9d1-2b824fd38bf7\" but was \"5319ca84-12f8-4d1c-a773-af2a5bbb0d1f\"" + Environment.NewLine);
                 exception.Message.ShouldContain("Expected property IntProperty to be \"999\" but was \"345\"" + Environment.NewLine);
                 exception.Message.ShouldContain("Expected property StringProperty to be \"Goodbye, World\" but was \"Hello, World\"" + Environment.NewLine);
-                exception.Message.ShouldContain("Expected property BoolType to be \"false\" but was \"true\"" + Environment.NewLine);
+                exception.Message.ShouldContain("Expected property BoolProperty to be \"false\" but was \"true\"" + Environment.NewLine);
             }
 
             [Fact]

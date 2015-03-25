@@ -1,4 +1,4 @@
-﻿namespace ModelMatcher.Tests.CollectionAssertions
+﻿namespace ModelMatcher.Tests.Collections
 {
     using System;
     using System.Collections.Generic;
@@ -9,7 +9,7 @@
     using TestModels;
     using Xunit;
 
-    public partial class CollectionAssertions
+    public partial class Collections
     {
         public class NonDefaultPropertiesMatch
         {
@@ -26,7 +26,7 @@
                         GuidProperty = Guid.NewGuid(),
                         IntProperty = 678,
                         StringProperty = "Goodbye, World",
-                        BoolType = false
+                        BoolProperty = false
                     },
                     new SimpleModel
                     {
@@ -34,7 +34,7 @@
                         GuidProperty = Guid.Parse(guidString),
                         IntProperty = 345,
                         StringProperty = "Hello, World",
-                        BoolType = true
+                        BoolProperty = true
                     }
                 };
 
@@ -64,7 +64,7 @@
                         GuidProperty = Guid.NewGuid(),
                         IntProperty = 678,
                         StringProperty = "Goodbye, World",
-                        BoolType = false
+                        BoolProperty = false
                     },
                     new SimpleModel
                     {
@@ -72,7 +72,7 @@
                         GuidProperty = Guid.Parse(guidString),
                         IntProperty = 345,
                         StringProperty = "Hello, World",
-                        BoolType = true
+                        BoolProperty = true
                     }
                 };
 
@@ -102,7 +102,7 @@
                         GuidProperty = Guid.NewGuid(),
                         IntProperty = 678,
                         StringProperty = "Goodbye, World",
-                        BoolType = false
+                        BoolProperty = false
                     },
                     new SimpleModel
                     {
@@ -110,7 +110,7 @@
                         GuidProperty = Guid.Parse(guidString),
                         IntProperty = 345,
                         StringProperty = "Hello, World",
-                        BoolType = true
+                        BoolProperty = true
                     }
                 };
 
@@ -141,7 +141,7 @@
                         GuidProperty = Guid.NewGuid(),
                         IntProperty = 678,
                         StringProperty = "Goodbye, World",
-                        BoolType = false
+                        BoolProperty = false
                     },
 
                     new SimpleModel
@@ -150,7 +150,7 @@
                         GuidProperty = Guid.Parse(guidString),
                         IntProperty = 345,
                         StringProperty = "Hello, World",
-                        BoolType = true
+                        BoolProperty = true
                     },
                     new SimpleModel
                     {
@@ -158,7 +158,7 @@
                         GuidProperty = Guid.Parse(guidString),
                         IntProperty = 345,
                         StringProperty = "Another, Message",
-                        BoolType = true
+                        BoolProperty = true
                     }
                 };
 
@@ -169,7 +169,7 @@
                     GuidProperty = Guid.Parse(guidString),
                     IntProperty = 345,
                     StringProperty = default(string),
-                    BoolType = true
+                    BoolProperty = true
                 };
 
                 // Then
@@ -189,7 +189,7 @@
                         GuidProperty = Guid.NewGuid(),
                         IntProperty = 678,
                         StringProperty = "Goodbye, World",
-                        BoolType = false
+                        BoolProperty = false
                     },
                     new SimpleModel
                     {
@@ -197,7 +197,7 @@
                         GuidProperty = Guid.Parse(guidString),
                         IntProperty = 345,
                         StringProperty = "Hello, World",
-                        BoolType = true
+                        BoolProperty = true
                     }
                 };
 
@@ -227,7 +227,7 @@
                         GuidProperty = Guid.NewGuid(),
                         IntProperty = 678,
                         StringProperty = "Goodbye, World",
-                        BoolType = false
+                        BoolProperty = false
                     },
                     new SimpleModel
                     {
@@ -235,7 +235,7 @@
                         GuidProperty = Guid.Parse(guidString),
                         IntProperty = 345,
                         StringProperty = "Hello, World",
-                        BoolType = true
+                        BoolProperty = true
                     }
                 };
 

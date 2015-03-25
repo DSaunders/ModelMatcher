@@ -1,4 +1,4 @@
-﻿namespace ModelMatcher.Tests.SingleItemAssertions
+﻿namespace ModelMatcher.Tests.SingleItems
 {
     using System;
     using Exceptions;
@@ -7,7 +7,7 @@
     using TestModels;
     using Xunit;
 
-    public partial class SingleItemAssertions
+    public partial class SingleItems
     {
         public class NonDefaultPropertiesMatch
         {
@@ -22,7 +22,7 @@
                     GuidProperty = Guid.Parse(guidString),
                     IntProperty = 345,
                     StringProperty = "Hello, World",
-                    BoolType = true
+                    BoolProperty = true
                 };
 
                 // When
@@ -32,7 +32,7 @@
                     GuidProperty = Guid.Parse(guidString),
                     IntProperty = 345,
                     StringProperty = "Hello, World",
-                    BoolType = true
+                    BoolProperty = true
                 };
 
                 // Then
@@ -50,7 +50,7 @@
                     GuidProperty = Guid.Parse(guidString),
                     IntProperty = 345,
                     StringProperty = "Hello, World",
-                    BoolType = true
+                    BoolProperty = true
                 };
 
                 // When
@@ -60,7 +60,7 @@
                     GuidProperty = Guid.Parse(guidString),
                     IntProperty = default(int),
                     StringProperty = default(string),
-                    BoolType = default(bool)
+                    BoolProperty = default(bool)
                 };
 
                 // Then
@@ -78,7 +78,7 @@
                     GuidProperty = Guid.Parse(guidString),
                     IntProperty = 345,
                     StringProperty = "Hello, World",
-                    BoolType = true
+                    BoolProperty = true
                 };
 
                 // When
@@ -88,7 +88,7 @@
                     GuidProperty = Guid.Parse(guidString),
                     IntProperty = 999,
                     StringProperty = default(string),
-                    BoolType = default(bool)
+                    BoolProperty = default(bool)
                 };
 
                 // Then
@@ -105,7 +105,7 @@
                     GuidProperty = Guid.Parse("5319ca84-12f8-4d1c-a773-af2a5bbb0d1f"),
                     IntProperty = 345,
                     StringProperty = "Hello, World",
-                    BoolType = true
+                    BoolProperty = true
                 };
 
                 // When
@@ -115,7 +115,7 @@
                     GuidProperty = Guid.Parse("49934b49-1cc3-443d-a89a-23496708f64b"),
                     IntProperty = 999,
                     StringProperty = default(string),
-                    BoolType = default(bool)
+                    BoolProperty = default(bool)
                 };
                 var exception = Record.Exception(() => model.ShouldMatchNonDefaultProperties(expectedResult));
 

@@ -47,10 +47,10 @@
   <ItemGroup>
     <Compile Include="CollectionAssertions\IgnoreDefaultPropertiesMode.cs" />
     <Compile Include="CollectionAssertions\AllPropertiesMatch.cs" />
-    <Compile Include="ConditionalMatching\SingleItems.cs" />
-    <Compile Include="SingleItemAssertions\AllPropertiesMatch.cs" />
+    <Compile Include="SingleItems\ConditionalMatching.cs" />
+    <Compile Include="SingleItems\AllPropertiesMatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SingleItemAssertions\NonDefaultPropertiesMatch.cs" />
+    <Compile Include="SingleItems\NonDefaultPropertiesMatch.cs" />
     <Compile Include="TestModels\ComplexModel.cs" />
     <Compile Include="TestModels\SimpleModel.cs" />
   </ItemGroup>
@@ -62,6 +62,9 @@
       <Project>{c66402ff-8bf6-4ab3-9b15-c9002eba833d}</Project>
       <Name>ModelMatcher</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ConditionalMatching\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -73,6 +73,32 @@ result.ShouldMatch(expectedResult, new[]
 	});
 ```
 
+You can use this on collections too:
+
+```csharp
+var resultCollection = myApi.Call();
+
+var expectedResult = new MyModel
+{
+    Property1 = "Some Value",
+    Property2 = 123,
+    Property3 = false,
+    Property4 = "Another Value"
+    ...
+};
+
+result.ShouldContainAMatch(expectedResult, new[]
+	{
+		Ignore.This(() => expectedResult.Property2),
+	});
+
+result.ShouldContainMatches(expectedResult, new[]
+	{
+		Ignore.This(() => expectedResult.Property2),
+	}, 
+	Matches.Three);
+```
+
 ## Non-default matching
 
 Check only the properties that are *not* set to the default value in the expected model. This saves you from specifying every property in the expected model even if it is not important.
@@ -142,4 +168,4 @@ result.ShouldMatchNonDefaultProperties(expectedResult, new[]
 ### Coming soon..
 
 - Support more complex models, currently only supports models one level deep
-- Conditional model matching for lists
+- Conditional model matching for lists using non-default mode
