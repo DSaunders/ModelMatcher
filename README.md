@@ -145,7 +145,6 @@ You can do this with conditional matching:
 ```csharp
 var result = myApi.Call();
 
-// We only care that Property2 matches, ignore everything else
 var expectedResult = new MyModel
 {
     Property2 = 123,
@@ -165,7 +164,6 @@ This also works with collections:
 ```csharp
 var resultCollection = myApi.Call();
 
-// We only care that Property2 matches, ignore everything else
 var expectedResult = new MyModel
 {
     Property2 = 123,
