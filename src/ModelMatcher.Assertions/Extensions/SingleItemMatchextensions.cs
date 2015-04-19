@@ -1,9 +1,6 @@
-namespace ModelMatcher.Assertions.Extensions
+namespace ModelMatcher.Assertions
 {
     using System.Collections.Generic;
-    using Conditions;
-    using Exceptions;
-    using Matchers;
 
     public static class SingleItemMatchextensions
     {

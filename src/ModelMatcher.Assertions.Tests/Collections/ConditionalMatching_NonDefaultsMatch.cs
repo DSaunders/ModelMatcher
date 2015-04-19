@@ -2,12 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using Assertions.Conditions;
-    using Assertions.Constants;
-    using Assertions.Exceptions;
-    using Assertions.Extensions;
     using Shouldly;
-    using TestModels;
     using Xunit;
 
     public partial class Collections

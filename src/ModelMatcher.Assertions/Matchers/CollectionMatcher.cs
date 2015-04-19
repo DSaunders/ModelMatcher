@@ -1,9 +1,7 @@
-﻿namespace ModelMatcher.Assertions.Matchers
+﻿namespace ModelMatcher.Assertions
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Conditions;
-    using Exceptions;
 
     internal static class CollectionMatcher
     {

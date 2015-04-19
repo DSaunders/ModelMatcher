@@ -1,4 +1,4 @@
-﻿namespace ModelMatcher.Assertions.Conditions
+﻿namespace ModelMatcher.Assertions
 {
     using System;
     using System.Linq.Expressions;

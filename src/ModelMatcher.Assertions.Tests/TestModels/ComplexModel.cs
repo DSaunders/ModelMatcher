@@ -1,4 +1,4 @@
-namespace ModelMatcher.Assertions.Tests.TestModels
+namespace ModelMatcher
 {
     internal class ComplexModel
     {

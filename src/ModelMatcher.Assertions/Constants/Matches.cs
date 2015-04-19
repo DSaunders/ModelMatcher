@@ -1,4 +1,4 @@
-﻿namespace ModelMatcher.Assertions.Constants
+﻿namespace ModelMatcher.Assertions
 {
     public static class Matches
     {

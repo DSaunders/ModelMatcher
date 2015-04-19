@@ -1,10 +1,7 @@
 ﻿namespace ModelMatcher.Assertions.Tests.SingleItems
 {
     using System;
-    using Assertions.Exceptions;
-    using Assertions.Extensions;
     using Shouldly;
-    using TestModels;
     using Xunit;
 
     public partial class SingleItems

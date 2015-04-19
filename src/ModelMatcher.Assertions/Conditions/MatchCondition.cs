@@ -1,4 +1,4 @@
-﻿namespace ModelMatcher.Assertions.Conditions
+﻿namespace ModelMatcher.Assertions
 {
     public enum MatchCondition
     {

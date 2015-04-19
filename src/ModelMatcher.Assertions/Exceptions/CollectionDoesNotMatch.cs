@@ -1,4 +1,4 @@
-﻿namespace ModelMatcher.Assertions.Exceptions
+﻿namespace ModelMatcher.Assertions
 {
     using System;
 

@@ -1,4 +1,4 @@
-namespace ModelMatcher.Assertions.Models
+namespace ModelMatcher.Assertions
 {
     internal class MatchResult
     {
