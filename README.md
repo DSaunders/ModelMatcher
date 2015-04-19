@@ -1,3 +1,6 @@
+# ModelMatcher Assertions [![NuGet Version](https://img.shields.io/nuget/v/modelmatcher.assertions.svg?style=flat)](https://www.nuget.org/packages/ModelMatcher.Assertions/)
+
+
 **ModelMatcher** makes verifying models in your unit tests easier and cleaner. 
 
 No more Linq statements to assert that an item is in a collection, and no need for for ten lines of assert statements just to check that all of the properties on a model are correct.
