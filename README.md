@@ -184,8 +184,3 @@ resultCollection.ShouldContainMatchesOfNonDefaultProperties(expectedResult, new[
 	},
 	Matches.Two);
 ```
-
-
-### Coming soon..
-
-- Match more complex models by recursively matching any reference types. Currently only inspects the first level of properties.
